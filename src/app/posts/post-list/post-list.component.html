@@ -1,0 +1,43 @@
+<!-- <mat-spinner *ngIf="isLoading"></mat-spinner>
+<mat-accordion *ngIf="!isLoading">
+  <mat-expansion-panel *ngFor= "let item of posts">
+    <mat-expansion-panel-header >
+      {{ item.postTitle }}
+    </mat-expansion-panel-header>
+    <div class="post-image">
+      <img [src]="item.imagePath" [alt]="item.title">
+    </div>
+    <p>{{ item.postContent }}</p>
+    <mat-action-row *ngIf="authStatus && userId === item.creator">
+      <a mat-button color ="accent" [routerLink] = "['/edit/',item.postId]" >EDIT </a>
+      <button mat-button color = "warn" (click)="onRemove(item.postId)">REMOVE</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+</mat-accordion> -->
+
+<div class="ui special cards">
+    <div class="card" *ngFor= "let item of posts" >
+        <div class="content">
+          <div class="right floated meta">14h</div>
+          <img class="ui avatar image" src="https://cdn3.iconfinder.com/data/icons/avatars-15/64/_Ninja-2-512.png"> Elliot
+        </div>
+        <div class="image">
+            <img [src]="item.imagePath" [alt]="item.title">
+        </div>
+        <div class="content">
+          <span class="right floated">
+            <i class="heart outline like icon"></i>
+            17 likes
+          </span>
+          <i class="comment icon"></i>
+          3 comments
+        </div>
+        <div class="extra content">
+          <div class="ui large transparent left icon input">
+            <i class="heart outline icon"></i>
+            <input type="text" placeholder="Add Comment...">
+          </div>
+        </div>
+      </div>
+
+</div>

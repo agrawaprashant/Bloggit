@@ -1,0 +1,26 @@
+<div class="ui special cards">
+        <div class="card" *ngFor = "let user of searchedUsers">
+          <div class="blurring dimmable image">
+            <div class="ui dimmer">
+              <div class="content">
+                <div class="center">
+                  <div class="ui inverted button">Add Friend</div>
+                </div>
+              </div>
+            </div>
+            <img src="/images/avatar/large/elliot.jpg">
+          </div>
+          <div class="content">
+            <a class="header">{{ user.firstName + " " + user.lastName }}</a>
+            <div class="meta">
+              <span class="date">Joined in Sep 2014</span>
+            </div>
+          </div>
+          <div class="extra content">
+            <a>
+              <i class="users icon"></i>
+              2 Friends
+            </a>
+          </div>
+        </div>
+      </div>

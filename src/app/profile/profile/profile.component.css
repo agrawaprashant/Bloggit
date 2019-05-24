@@ -1,0 +1,23 @@
+img{
+    border-radius: 50%;
+    height: 120px;
+    width: 120px;
+}
+
+.dashboard{
+    display: flex;
+    
+}
+
+.profile-pic{
+    margin-top: 4rem;
+}
+
+.profile-name{
+    margin-top: 10rem;
+}
+
+input[type ="file"]{
+    visibility: hidden;
+  }
+  

@@ -1,0 +1,19 @@
+ul{
+    list-style: none;
+    padding: 0%;
+    margin: 1rem;
+}
+
+a{
+    text-decoration: none;
+    color: cornsilk
+}
+
+.spacer{
+    margin-left: auto
+}
+
+.search{
+    height: 30px;
+    width: 70%
+}

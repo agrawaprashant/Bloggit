@@ -1,0 +1,37 @@
+
+      <mat-card>
+      <mat-spinner *ngIf="isLoading"></mat-spinner>
+          <form [formGroup] = "form" (ngSubmit) = "onSubmit()" *ngIf="!isLoading">
+            <mat-form-field>
+                <input 
+                 type="text" 
+                 placeholder="Post title"
+                 formControlName = "postTitle" 
+                 matInput
+                >
+                <mat-error *ngIf="form.get('postTitle').invalid">Please enter a post title.</mat-error>
+            </mat-form-field>
+          <mat-form-field>
+              <textarea
+              placeholder="Whats on your mind?" 
+              cols="15" 
+              rows="6"
+              formControlName = "postContent" 
+              matInput
+              ></textarea>
+              <mat-error *ngIf="form.get('postContent').invalid">Post content can not be empty!</mat-error> 
+            </mat-form-field>
+            <div class = "buttonArea">
+              <input type="file" #filePicker (change) ="onImagePicked($event)">
+              <button mat-stroked-button (click)="filePicker.click()" type="button">Select Photo</button>
+              <button class="btn btn-success spacer">Post</button>
+                <img 
+                class="image-preview spacer" 
+                [src]="imagePreview" 
+                [alt]="form.get('postTitle')" 
+                *ngIf="imagePreview !== '' && imagePreview && form.get('image').valid"
+                >
+                <!-- <mat-error *ngIf="form.controls.image.invalid">File should be an image!</mat-error> -->
+            </div>       
+    </form>
+  </mat-card>

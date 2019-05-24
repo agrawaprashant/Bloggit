@@ -1,0 +1,19 @@
+<div class="dashboard">
+    <div class="profile-pic">
+            <form [formGroup] = "form">
+                <input type="file" #filePicker (change) ="onImagePicked($event)">
+                    <button mat-stroked-button (click)="filePicker.click()" type="button">
+                        <div *ngIf="imagePreview === undefined">
+                            <img [src]="userData.profileImage" alt="">
+                        </div>
+                        <div *ngIf="imagePreview">
+                                <img [src]=[imagePreview] alt="">
+                        </div>
+                    </button>        
+            </form>
+                    
+    </div>
+    <div class="profile-name">
+        <h1>{{ userData.firstName+ " "+ userData.lastName }}</h1>
+    </div>
+</div>
