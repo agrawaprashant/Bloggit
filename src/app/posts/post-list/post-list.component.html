@@ -18,7 +18,7 @@
 <div class="ui special cards">
     <div class="card" *ngFor= "let item of posts" >
         <div class="content">
-          <div class="right floated meta">14h</div>
+          <div class="right floated meta">{{ item.createdAt | date }}</div>
           <img class="ui avatar image" src="https://cdn3.iconfinder.com/data/icons/avatars-15/64/_Ninja-2-512.png"> Elliot
         </div>
         <div class="image">

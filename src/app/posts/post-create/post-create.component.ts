@@ -44,12 +44,13 @@ export class PostCreateComponent implements OnInit {
               postTitle: result.postTitle, 
               postContent: result.postContent, 
               imagePath: result.imagePath,
-              creator: result.creator };
+              creator: result.creator,
+              createdAt: result.createdAt };
             this.form.setValue({ 
               'postTitle': this.post.postTitle, 
               'postContent': this.post.postContent,
               'image':  this.post.imagePath
-            });
+            }); 
           });
 
       }else{

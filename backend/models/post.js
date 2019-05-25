@@ -4,7 +4,7 @@ const postSchema = mongoose.Schema({
     postTitle: { type: String, required: true },
     postContent: { type: String, required: true },
     imagePath: { type:String, required: true },
-    creator: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true }
+    creator: { type: String, required: true }
 });
-mongoose.model('post', postSchema);
-module.exports = mongoose.model('Post', postSchema);
+
+module.exports = postSchema;

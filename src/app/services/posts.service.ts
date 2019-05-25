@@ -20,13 +20,16 @@ export class PostsService {
     postData.append("postTitle", postTitle);
     postData.append("postContent", postContent);
     postData.append("image", image, postTitle);
-    this.http.post<{ message: string, post: Post }>('http://localhost:3000/api/posts', postData)
+    postData.append("createdAt", new Date().toString())
+    const creatorId = this.authService.getUserData().userId;
+    this.http.put<{ message: string, post: Post }>('http://localhost:3000/api/posts/'+ creatorId, postData)
       .subscribe(result =>{
         const post:Post = {'postId': result.post.postId, 
                            'postTitle': postTitle, 
                            'postContent': postContent,
                             'imagePath': result.post.imagePath,
-                            'creator': result.post.creator
+                            'creator': result.post.creator,
+                            'createdAt': result.post.createdAt
                           };
         this.post.push(post);
         this.postUpdated.next([...this.post]);
@@ -39,7 +42,8 @@ export class PostsService {
                            postTitle: string, 
                            postContent: string, 
                            imagePath: string, 
-                           creator: string 
+                           creator: string,
+                           createdAt: string 
                           }
         >('http://localhost:3000/api/posts/' + postId);
   }
@@ -48,13 +52,15 @@ export class PostsService {
         'http://localhost:3000/api/posts'
         )
         .pipe(map((postData) =>{
-          return postData.posts.map((post) => {
+          // console.log(postData.posts)
+          return postData.posts[0].map((post) => {
             return {
               postTitle: post.postTitle,
               postContent: post.postContent,
               postId: post._id,
               imagePath: post.imagePath,
-              creator: post.creator
+              creator: post.creator,
+              createdAt: post.createdAt
               }
             })
         }))
@@ -91,7 +97,8 @@ export class PostsService {
         'postTitle': postTitle,
         'postContent': postContent,
         'imagePath': image,
-        'creator' : null 
+        'creator' : null,
+        'createdAt': null 
       } 
     }
     this.http.put('http://localhost:3000/api/posts/'+ id , postData)
@@ -103,7 +110,8 @@ export class PostsService {
           'postTitle': postTitle,
           'postContent': postContent,
           'imagePath': '',
-          'creator': this.authService.getUserData().userId
+          'creator': this.authService.getUserData().userId,
+          'createdAt': this.post[oldPostIndex].createdAt
          }
         updatedPost[oldPostIndex] = post;
         this.post = updatedPost;
